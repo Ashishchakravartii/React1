@@ -1,32 +1,19 @@
 import React, { useState } from "react";
+import Create from "./components/Create";
+import Show from "./components/Show";
 
 const App = () => {
-  const [username, setusername] = useState("");
-  const [skill, setskill] = useState("");
+    const [users, setusers] = useState([
+        { username: "John Doe", skill: "Full Stack Developer" },
+    ]);
 
-  const SubmitHandler = (event) => {
-    event.preventDefault();
-    console.log(username, skill);
-  };
-  return (
-    <div>
-      <form onSubmit={SubmitHandler}>
-        <input
-          onChange={(e) => setusername(e.target.value)}
-          value={username}
-          type="text"
-          placeholder="username"
-        />
-        <input
-          onChange={(e) => setskill(e.target.value)}
-          value={skill}
-          type="text"
-          placeholder="skill"
-        />
-        <button>Submit</button>
-      </form>
-    </div>
-  );
+    return (
+        <div>
+            <Create users={users} setusers={setusers} />
+            <hr />
+            <Show users={users} setusers={setusers} />
+        </div>
+    );
 };
 
 export default App;
